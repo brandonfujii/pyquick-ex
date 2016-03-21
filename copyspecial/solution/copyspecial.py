@@ -42,7 +42,7 @@ def copy_to(paths, to_dir):
 
 def zip_to(paths, zipfile):
   """Zip up all of the given files into a new zip file with the given name."""
-  cmd = 'zip -j ' + zipfile + ' ' + ' '.join(paths)
+  cmd = 'zip -j %s %s' % (zipfile, ' '.join(paths))
   print "Command I'm going to do:" + cmd
   (status, output) = commands.getstatusoutput(cmd)
   # If command had a problem (status is non-zero),
