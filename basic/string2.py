@@ -19,11 +19,10 @@ def verbing(s):
   # +++your code here+++
   if len(s) >= 3: 
     if s.find('ing') == -1:
-      return s + 'ing'
+      s = s + 'ing'
     else:
-      return s + 'ly'
-  else:
-    return s
+      s = s + 'ly'
+  return s
 
 
 # E. not_bad
@@ -36,9 +35,10 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  if s.find('not') != -1 and s.find('bad') != 1:
-    if s.find('not') < s.find('bad'):
-      return s.replace(s[s.find('not'):s.find('bad') + len('bad')], 'good')
+  a = s.find('not')
+  b = s.find('bad')
+  if a != -1 and b != 1 and b > a:
+    s = s.replace(s[a:b + len('bad')], 'good')
   return s
 
 
@@ -52,10 +52,12 @@ def not_bad(s):
 
 # Helper function
 def divide_length(s):
+  middle = len(s) / 2
   if len(s) % 2 == 0:
-    return [s[:len(s) / 2], s[len(s) / 2:]]
+    s = [s[:middle], s[middle:]]
   else:
-    return [s[:len(s) / 2 + 1], s[len(s) / 2 + 1:]]
+    s = [s[:middle + 1], s[middle + 1:]]
+  return s
 
 def front_back(a, b):
   # +++your code here+++
