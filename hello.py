@@ -16,18 +16,36 @@ Try changing the 'Hello' to 'Howdy' and run again.
 Once you have that working, you're ready for class -- you can edit
 and run Python code; now you just need to learn Python!
 """
-
+import commands
 import sys
+import os
 
+def Cat(filename):
+  try:
+    f = open(filename, 'rU')
+    lines = f.read()
+    print lines
+    f.close()
+  except IOError:
+    print 'IO Error!', filename
+
+def List(dir):
+  cmd = 'ls -l ' + dir
+  (status, output) = commands.getstatusoutput(cmd)
+  if status:
+    sys.stderr.write('there was an error: ' + output)
+    sys.exit(1)
+  print output
+  filenames = os.listdir(dir)
+  for filename in filenames:
+    path = os.path.join(dir, filename)
+    print path
+    print os.path.abspath(path)
 
 # Define a main() function that prints a little greeting.
 def main():
   # Get the name from the command line, using 'World' as a fallback.
-  if len(sys.argv) >= 2:
-    name = sys.argv[1]
-  else:
-    name = 'World'
-  print 'Yo', name
+  Cat(sys.argv[1])
 
 # This is the standard boilerplate that calls the main() function.
 if __name__ == '__main__':

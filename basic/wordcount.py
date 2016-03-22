@@ -92,10 +92,7 @@ def print_top(filename):
   for word_tuple in sorted_word_tuples[:20]:
     print word_tuple[0], word_tuple[1]
   
-
-
   
-
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
 def main():
